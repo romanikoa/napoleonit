@@ -1,0 +1,16 @@
+- name: Installing docker by yum
+  yum:
+    name: "docker"
+    state: latest
+
+- name: Enable service docker
+  sudo: yes
+  service: name=docker enabled=yes
+
+- name: Starting service docker
+  sudo: yes
+  service: name=docker state=started
+
+- name: Set docker_inst true
+  set_fact:
+    docker_inst: true

@@ -22,9 +22,6 @@
   args:
     chdir: /dock
 
-#- name: drop docker build directory
-#  file: path=/dock state=absent
-
 - name: Create the mongodb user
   sudo: yes
   user: name=mongodb uid={{ mongo_uid }} comment="MongoDB"

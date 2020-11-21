@@ -1,5 +1,13 @@
 - name: init nodes
+  become: yes
   hosts: databases
   roles:
    - role: nodes
+  serial: 1
+
+- name: init mongo master node
+  hosts: databases
+  sudo: yes
+  roles:
+   - role: replica
   serial: 1

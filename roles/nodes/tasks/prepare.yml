@@ -1,0 +1,54 @@
+---
+#install req
+  - name: Update apt packages
+    apt:
+      update_cache: "yes"
+      force_apt_get: "yes"
+
+  - name: Install packages needed for Docker
+    apt:
+      name: "{{ DOCKER_PACKAGES }}"
+      state: present
+      force_apt_get: "yes"
+
+  - name: Add Docker GPG apt Key
+    apt_key:
+      url: https://download.docker.com/linux/ubuntu/gpg
+      state: present
+
+  - name: Save the current Ubuntu release version into a variable
+    shell: lsb_release -cs
+    register: ubuntu_version
+
+  - name: Add Docker Repository
+    apt_repository:
+      repo: "deb [arch=amd64] https://download.docker.com/linux/debian stretch stable"
+      state: present
+
+  - name: Update apt packages
+    apt:
+      update_cache: "yes"
+      force_apt_get: "yes"
+
+  - name: Install Docker
+    apt:
+      name: "docker-ce"
+      state: present
+      force_apt_get: "yes"
+
+  - name: Create docker group
+    group:
+      name: "docker"
+      state: present
+
+  - name: Docker installed
+    set_fact:    
+      docker_inst: true
+    when: docker_inst==false
+
+
+  - name: Adding user {{ USER }} to docker group  
+    user:
+      name: "{{ USER }}"
+      groups: "docker"
+      append: "yes"

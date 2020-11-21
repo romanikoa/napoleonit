@@ -1,9 +1,12 @@
-  
 ---
 # tasks file for mongodb
+- name: install docker node
+  include: prepare.yml
+  when: not docker_inst
+
 - name: init mongodb node
   include: node-init.yml
-  when: not flush_all
+  when: not flush_all and docker_inst
 
 - name: flush all
   include: node-del.yml

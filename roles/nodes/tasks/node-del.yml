@@ -3,12 +3,12 @@
 - name: mongo stop service
   sudo: yes
   ignore_errors: yes
-  service: name=mongodb state=stopped
+  service: name=mongo state=stopped
 
 - name: mongo disable mongodb service
   sudo: yes
   ignore_errors: yes
-  service: name=mongodb enabled=no
+  service: name=mongo enabled=no
 
 - name: mongo:Delete service file
   file: path="/etc/init/mongodb.conf" state=absent
@@ -27,7 +27,8 @@
 
 - name: mongo:docker delete mongo image
   sudo: yes
-  shell: docker rmi mongo
+  shell: docker rmi mongo:{{ mongo_version }}
+  shell: docker rmi mongo-oem:latest
   ignore_errors: yes
   tags: flush_all
 

@@ -1,20 +1,19 @@
 ---
 # tasks file for mongodb nodes
-
-- name: create docker build directory
+- name: "create docker build directory"
   sudo: yes
   file: path=/dock state=directory
 
-- name: "mongo: copy dockerfile"
+- name: copy dockerfile
   sudo: yes
   template: 
-    src: mongo-oem-docker/Dockerfile.j2 
+    src: Dockerfile.j2 
     dest: "/dock/Dockerfile"
 
 - name: "mongo: copy change_uid.sh for dockerfile"
   sudo: yes
   template: 
-    src: mongo-oem-docker/change_uid.sh.j2 
+    src: change_uid.sh.j2 
     dest: "/dock/change_uid.sh"
 
 - name: "mongo: build mongo-oem image"
@@ -50,14 +49,14 @@
     owner: "{{ mongo_user}}"
     group: "{{ mongo_user}}"
 
-- name: Copy the keyfile for authentication
-  sudo: yes
-  copy: src=secret dest={{ mongodb_datadir_prefix }}/secret owner={{ mongo_user}} group={{ mongo_user}} mode=0400
+#- name: Copy the keyfile for authentication
+ # sudo: yes
+#  copy: src=secret dest={{ mongodb_datadir_prefix }}/secret owner={{ mongo_user}} group={{ mongo_user}} mode=0400
 
 - name: mongo:copy service config
   sudo: yes
   template:
-    src: systemd/mongo.service.j2
+    src: mongo.service.j2
     dest: /etc/systemd/system/mongo.service
     backup: yes
     owner: mongodb

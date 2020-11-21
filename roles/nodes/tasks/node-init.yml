@@ -15,6 +15,7 @@
   template: 
     src: change_uid.sh.j2 
     dest: "/dock/change_uid.sh"
+  when:  ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: "mongo: build mongo-oem image"
   sudo: yes
@@ -45,10 +46,16 @@
     dest: "{{ mongodb_confdir }}/mongo.conf"
     owner: "{{ mongo_user}}"
     group: "{{ mongo_user}}"
+  when:  ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
-#- name: Copy the keyfile for authentication
- # sudo: yes
-#  copy: src=secret dest={{ mongodb_datadir_prefix }}/secret owner={{ mongo_user}} group={{ mongo_user}} mode=0400
+- name: Create the mongodb configuration file
+  sudo: yes
+  template: 
+    src: mongo-centos.conf.j2 
+    dest: "{{ mongodb_confdir }}/mongo.conf"
+    owner: "{{ mongo_user}}"
+    group: "{{ mongo_user}}"
+  when:  ansible_distribution != 'Debian' and ansible_distribution != 'Ubuntu'
 
 - name: mongo:copy service config
   sudo: yes

@@ -1,0 +1,9 @@
+# mongo.conf
+
+port = {{ mongod_port }}
+
+dbpath={{ mongodb_datadir_prefix }}db/
+#keyFile={{ mongodb_datadir_prefix }}secret
+
+# Replication Options
+replSet={{ mongo_replset }}

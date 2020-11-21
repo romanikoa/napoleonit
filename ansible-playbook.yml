@@ -1,0 +1,5 @@
+- name: init nodes
+  hosts: databases
+  roles:
+   - role: nodes
+  serial: 1

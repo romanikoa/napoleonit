@@ -39,6 +39,8 @@ For check replicaset you can connect to node and use command shell
 sudo docker exec -it mongod_server mongo
 > rs.status()
 ```
+#result
+```
 {
         "set" : "ms1",
         "date" : ISODate("2020-11-22T13:12:00.158Z"),
@@ -142,3 +144,4 @@ sudo docker exec -it mongod_server mongo
         ],
         "ok" : 1
 }
+```

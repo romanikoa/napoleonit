@@ -2,7 +2,7 @@
 # tasks file for mongodb
 - name: install docker node
   include: prepare.yml
-  when: not docker_inst and ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+  when: not flush_all and not docker_inst and ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: install docker node centos
   include: prepare-centos.yml

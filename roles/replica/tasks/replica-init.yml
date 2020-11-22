@@ -9,4 +9,5 @@
   template: src=repset_init.j2 dest={{ mongodb_confdir }}/repset_init.js
 
 - name: Initialize the replication set
+  sudo: yes
   shell: docker exec -it mongod-server mongo localhost:"{{ mongod_port }}"/admin "{{ mongodb_confdir }}"/repset_init.js

@@ -1,0 +1,9 @@
+---
+galaxy_info:
+  author: Aleksandr Romaniko 
+  description: Role for configure mongoDB nodes in container
+  company: none
+  license: license
+  min_ansible_version: 1.2
+
+dependencies: [ ansible ]

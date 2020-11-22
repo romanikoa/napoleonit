@@ -1,0 +1,9 @@
+---
+galaxy_info:
+  author: Aleksandr Romaniko 
+  description: Role for make docker container ready nodes by Ansible
+  company: none
+  license: license
+  min_ansible_version: 1.2
+
+dependencies: [ ansible ]

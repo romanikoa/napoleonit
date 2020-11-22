@@ -1,4 +1,5 @@
-# napoleonit test ReplicaSet MongoDB on 3 instances on Docker by ansible
+# NapoleonIT test 
+##ReplicaSet MongoDB 3 nodes on Docker container by Ansible
 ```
 ## Environments setup
 Please install ansible on all needed nodes and check it.
@@ -12,13 +13,14 @@ Change names of hosts in file ./hosts.yml
 ## Checked on Ubuntu 16.04 18.04 20.04, Debian 10, Centos 7 8
 ```sh
 ansible --version
+```
 ansible 2.7.7
   config file = /etc/ansible/ansible.cfg
   configured module search path = ['/home/romanikoaa/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
   ansible python module location = /usr/lib/python3/dist-packages/ansible
   executable location = /usr/bin/ansible
   python version = 3.7.3 (default, Jul 25 2020, 13:03:44) [GCC 8.3.0]
-```
+
 ## Prepare python path for ansible on nodes if need it
 ```sh 
 ansible-playbook -i hosts.yml ansible-python.yml

@@ -44,8 +44,7 @@
   - name: Docker installed
     set_fact:    
       docker_inst: true
-    when: docker_inst==false
-
+    when: not docker_inst
 
   - name: Adding user {{ USER }} to docker group  
     user:

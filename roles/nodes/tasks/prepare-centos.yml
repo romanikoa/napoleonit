@@ -1,3 +1,4 @@
+# prepare nodes on centos
 - name: Installing yum-utils
   yum:
     name: yum-utils

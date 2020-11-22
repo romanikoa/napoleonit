@@ -1,5 +1,5 @@
 ---
-# tasks file for mongodb nodes
+# task for install docker and configure nodes
 - name: "create docker build directory"
   sudo: yes
   file: path=/dock state=directory

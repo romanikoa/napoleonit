@@ -1,5 +1,5 @@
 ---
-# tasks file for mongo
+# delete docker images and config folders
 - name: mongo stop service
   sudo: yes
   ignore_errors: yes
@@ -27,13 +27,13 @@
 
 - name: mongo:docker delete mongo image
   sudo: yes
-  shell: docker rmi mongo:{{ mongo_version }}
+  shell: docker rmi -f mongo:{{ mongo_version }}
   ignore_errors: yes
   tags: flush_all
 
 - name: mongo:docker delete mongo-oem image
   sudo: yes
-  shell: docker rmi mongo-oem:latest
+  shell: docker rmi -f mongo-oem:latest
   ignore_errors: yes
   tags: flush_all
 

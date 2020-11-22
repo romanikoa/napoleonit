@@ -1,6 +1,6 @@
 # NapoleonIT test 
 ##ReplicaSet MongoDB 3 nodes on Docker container by Ansible
-```
+
 ## Environments setup
 Please install ansible on all needed nodes and check it.
 
@@ -43,5 +43,4 @@ For check replicaset you can connect to node and use command shell
 ```sh
 sudo docker exec -it mongod_server mongo
 > rs.status()
-
 ```

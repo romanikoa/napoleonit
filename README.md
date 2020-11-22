@@ -14,9 +14,8 @@ Change names of hosts in file ./hosts.yml
 
 ```sh
 ansible --version
-```
         ansible 2.7.7
-
+```
 ## Prepare python path for ansible on nodes if need it
 
 ```sh 

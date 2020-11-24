@@ -10,7 +10,7 @@ Change names of hosts in file ./hosts.yml
 * nodes - Prepare nodes, install docker, make images and service
 * replica - Compare config files and deploy on databases node for ReplicaSet configuration on MongoDB
 
-## Checked on Ubuntu 16.04 18.04 20.04, Debian 10, Centos 7 8
+## Tested on Ubuntu 16.04 18.04 20.04, Debian 10, Centos 7 8
 
 ```sh
 ansible --version
